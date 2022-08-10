@@ -9,10 +9,12 @@ class MyBarrier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
+      width: 75,
+      height: size,
       decoration: BoxDecoration(
         color: Colors.green,
+        border: Border.all(width: 10, color: Colors.green.shade800),
+        borderRadius: BorderRadius.circular(15),
       ),
     );
   }
