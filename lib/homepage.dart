@@ -1,6 +1,7 @@
 //ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'dart:async';
+import 'package:flappy_bird_clone/barriers.dart';
 import 'package:flappy_bird_clone/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -43,20 +44,40 @@ class _HomePageState extends State<HomePage> {
         children: (<Widget>[
           Expanded(
             flex: 3,
-            child: GestureDetector(
-              onTap: () {
-                if (gameStarted) {
-                  jump();
-                } else {
-                  startGame();
-                }
-              },
-              child: AnimatedContainer(
-                alignment: Alignment(0, birdYaxis),
-                duration: Duration(milliseconds: 0),
-                color: Colors.blue,
-                child: MyBird(),
-              ),
+            child: Stack(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (gameStarted) {
+                      jump();
+                    } else {
+                      startGame();
+                    }
+                  },
+                  child: AnimatedContainer(
+                    alignment: Alignment(0, birdYaxis),
+                    duration: Duration(milliseconds: 0),
+                    color: Colors.blue,
+                    child: MyBird(),
+                  ),
+                ),
+                Container(
+                    alignment: Alignment(0, -0.3),
+                    child: gameStarted
+                        ? Text(" ")
+                        : Text("T A P   T O   P L A Y",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ))),
+                AnimatedContainer(
+                  alignment: Alignment(0, 1),
+                  duration: Duration(milliseconds: 0),
+                  child: MyBarrier(
+                    size: 200.0,
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
