@@ -34,6 +34,23 @@ class _HomePageState extends State<HomePage> {
         barrierXone -= 0.05;
         barrierXtwo -= 0.05;
       });
+
+      setState(() {
+        if (barrierXone < -1.1) {
+          barrierXone += 2.2;
+        } else {
+          barrierXone -= 0.5;
+        }
+      });
+
+      setState(() {
+        if (barrierXtwo < -1.1) {
+          barrierXone += 2.2;
+        } else {
+          barrierXtwo -= 0.5;
+        }
+      });
+
       if (birdYaxis > 1) {
         timer.cancel();
         gameStarted = false;
