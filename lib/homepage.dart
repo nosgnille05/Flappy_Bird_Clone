@@ -11,12 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Bird Variables
   static double birdYaxis = 0;
   double time = 0, height = 0, initialHeight = birdYaxis, velocity = 2.8;
+
+  //Game Variables
   bool gameStarted = false;
-  static double barrierXone = 1.7;
+
+  //Barrier Variables
+  /*static double barrierXone = 1.7;
   static double barrierXtwo = barrierXone + 1.7;
-  //double barrierXthree = barrierXtwo + 1.7;
+  //double barrierXthree = barrierXtwo + 1.7;*/
+  static List<double> barrierXone = [2, 2 + 1.7];
+  static double barrierWidth = 0.5;
+  List<List<double>> barrierHeight = [
+    [0.6, 0.4],
+    [0.4, 0.6],
+  ];
 
   void jump() {
     setState(() {
