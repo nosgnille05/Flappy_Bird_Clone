@@ -17,17 +17,19 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
+  int score = 1;
+  int highScore = 0;
 
   //Barrier Variables
-  /*static double barrierXone = 1.7;
+  static double barrierXone = 1.7;
   static double barrierXtwo = barrierXone + 1.7;
   //double barrierXthree = barrierXtwo + 1.7;*/
-  static List<double> barrierXone = [2, 2 + 1.7];
+  /*static List<double> barrierXone = [2, 2 + 1.7];
   static double barrierWidth = 0.5;
   List<List<double>> barrierHeight = [
     [0.6, 0.4],
     [0.4, 0.6],
-  ];
+  ];*/
 
   void jump() {
     setState(() {
@@ -48,6 +50,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXone < -1.7) {
           barrierXone += 3.4;
+          score += 1;
         } else {
           barrierXone -= 0.05;
         }
@@ -56,30 +59,21 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXtwo < -1.7) {
           barrierXtwo += 3.4;
+          score += 1;
         } else {
           barrierXtwo -= 0.05;
         }
       });
 
-      /*setState(() {
-        if (barrierXthree < -1.7) {
-          barrierXthree += 3.4;
-        } else {
-          barrierXthree -= 0.05;
-        }
-      });*/
-
       if (birdIsDead()) {
         timer.cancel();
         gameStarted = false;
         _showDialog();
+        score = 0;
       }
-      //time += 0.01;
+      time += 0.01;
     });
   }
-
-  int score = 101;
-  int highscore = 101;
 
   void _showDialog() {
     showDialog(
@@ -90,7 +84,24 @@ class _HomePageState extends State<HomePage> {
             title: Center(
               child: Text(
                 "GAME OVER",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+            ),
+            content: Container(
+              height: 50,
+              child: Column(
+                children: [
+                  Text(
+                    "Your score: " + score.toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  Text(
+                    "High score: " + highScore.toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
               ),
             ),
             actions: [
@@ -99,7 +110,8 @@ class _HomePageState extends State<HomePage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
-                    padding: EdgeInsets.all(7),
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(8),
                     color: Colors.white,
                     child: Text(
                       "PLAY AGAIN",
@@ -120,11 +132,16 @@ class _HomePageState extends State<HomePage> {
       gameStarted = false;
       time = 0;
       initialHeight = birdYaxis;
+      barrierXone = 1.7;
+      barrierXtwo = barrierXone + 1.7;
     });
   }
 
   bool birdIsDead() {
     if (birdYaxis < -1.1 || birdYaxis > 1) {
+      if (score > highScore) {
+        highScore = score;
+      }
       return true;
     }
     return false;
