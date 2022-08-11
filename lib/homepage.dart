@@ -58,49 +58,65 @@ class _HomePageState extends State<HomePage> {
         }
       });*/
 
-      if (birdYaxis > 1) {
+      if (birdIsDead()) {
         timer.cancel();
         gameStarted = false;
+        _showDialog();
       }
+      //time += 0.01;
     });
   }
 
   int score = 101;
   int highscore = 101;
 
-  void _ShowDialog() {
+  void _showDialog() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Colors.brown,
-            title: Text(
-              "GAME OVER",
-              style: TextStyle(color: Colors.white),
-            ),
-            content: Text(
-              "Score " + score.toString(),
-              style: TextStyle(color: Colors.white),
+            title: Center(
+              child: Text(
+                "GAME OVER",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             actions: [
-              FlatButton(
-                  child: Text(
-                    "PLAY AGAIN",
-                    style: TextStyle(color: Colors.white),
+              GestureDetector(
+                onTap: resetGame,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Container(
+                    padding: EdgeInsets.all(7),
+                    color: Colors.white,
+                    child: Text(
+                      "PLAY AGAIN",
+                      style: TextStyle(color: Colors.brown),
+                    ),
                   ),
-                  onPressed: () {
-                    if (score > highscore) {
-                      highscore = score;
-                    }
-                    initState();
-                    setState(() {
-                      gameStarted = false;
-                    });
-                    Navigator.of(context).pop();
-                  })
+                ),
+              ),
             ],
           );
         });
+  }
+
+  void resetGame() {
+    Navigator.pop(context);
+    setState(() {
+      birdYaxis = 0;
+      gameStarted = false;
+      time = 0;
+      initialHeight = birdYaxis;
+    });
+  }
+
+  bool birdIsDead() {
+    if (birdYaxis < -1.1 || birdYaxis > 1) {
+      return true;
+    }
+    return false;
   }
 
   @override
