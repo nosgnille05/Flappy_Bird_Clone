@@ -17,19 +17,12 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
-  int score = 1;
+  int score = 0;
   int highScore = 0;
 
   //Barrier Variables
   static double barrierXone = 1.7;
   static double barrierXtwo = barrierXone + 1.7;
-  //double barrierXthree = barrierXtwo + 1.7;*/
-  /*static List<double> barrierXone = [2, 2 + 1.7];
-  static double barrierWidth = 0.5;
-  List<List<double>> barrierHeight = [
-    [0.6, 0.4],
-    [0.4, 0.6],
-  ];*/
 
   void jump() {
     setState(() {
@@ -40,6 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   void startGame() {
     gameStarted = true;
+    score = 0;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
       height = -4.9 * time * time + velocity * time;
@@ -50,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXone < -1.7) {
           barrierXone += 3.4;
-          score += 1;
+          //score += 1;
         } else {
           barrierXone -= 0.05;
         }
@@ -59,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXtwo < -1.7) {
           barrierXtwo += 3.4;
-          score += 1;
+          //score += 1;
         } else {
           barrierXtwo -= 0.05;
         }
@@ -69,10 +63,16 @@ class _HomePageState extends State<HomePage> {
         timer.cancel();
         gameStarted = false;
         _showDialog();
-        score = 0;
       }
       time += 0.01;
     });
+  }
+
+  int scoreBoard() {
+    if (barrierXone < -0.1 || barrierXtwo < -0.1) {
+      score += 1;
+    }
+    return score;
   }
 
   void _showDialog() {
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Text(
-                    "Your score: " + score.toString(),
+                    "Your score: " + scoreBoard().toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
