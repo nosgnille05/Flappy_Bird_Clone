@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
 
   void startGame() {
     gameStarted = true;
-    gameScore = 0;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
       height = -4.9 * time * time + velocity * time;
@@ -67,9 +66,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   int scoreBoard() {
-    if (barrierXone < -0.1 || barrierXtwo < -0.1) {
-      gameScore++;
+    //must be updated if more barriers are added
+    if (gameScore % 2 == 0) {
+      if (barrierXone < -0.1) gameScore++;
+    } else {
+      if (barrierXtwo < -0.1) gameScore++;
     }
+
     return gameScore;
   }
 
@@ -138,8 +141,8 @@ class _HomePageState extends State<HomePage> {
 
   bool birdIsDead() {
     if (birdYaxis < -1.1 || birdYaxis > 1) {
-      if (scoreBoard() > highScore) {
-        highScore = scoreBoard();
+      if (gameScore > highScore) {
+        highScore = gameScore;
       }
       return true;
     }
@@ -166,9 +169,13 @@ class _HomePageState extends State<HomePage> {
                     child: MyBird(),
                   ),
                   Container(
-                      alignment: Alignment(0, -0.3),
+                      alignment: Alignment(0, -0.2),
                       child: gameStarted
-                          ? Text(" ")
+                          ? Text(scoreBoard().toString(),
+                              style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ))
                           : Text("T A P   T O   P L A Y",
                               style: TextStyle(
                                 fontSize: 20,
