@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
-  int score = 0;
+  int gameScore = 0;
   int highScore = 0;
 
   //Barrier Variables
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   void startGame() {
     gameStarted = true;
-    score = 0;
+    gameScore = 0;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
       height = -4.9 * time * time + velocity * time;
@@ -44,7 +44,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXone < -1.7) {
           barrierXone += 3.4;
-          //score += 1;
         } else {
           barrierXone -= 0.05;
         }
@@ -53,7 +52,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (barrierXtwo < -1.7) {
           barrierXtwo += 3.4;
-          //score += 1;
         } else {
           barrierXtwo -= 0.05;
         }
@@ -70,9 +68,9 @@ class _HomePageState extends State<HomePage> {
 
   int scoreBoard() {
     if (barrierXone < -0.1 || barrierXtwo < -0.1) {
-      score += 1;
+      gameScore++;
     }
-    return score;
+    return gameScore;
   }
 
   void _showDialog() {
@@ -134,13 +132,14 @@ class _HomePageState extends State<HomePage> {
       initialHeight = birdYaxis;
       barrierXone = 1.7;
       barrierXtwo = barrierXone + 1.7;
+      gameScore = 0;
     });
   }
 
   bool birdIsDead() {
     if (birdYaxis < -1.1 || birdYaxis > 1) {
-      if (score > highScore) {
-        highScore = score;
+      if (scoreBoard() > highScore) {
+        highScore = scoreBoard();
       }
       return true;
     }
@@ -151,11 +150,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (gameStarted) {
-          jump();
-        } else {
-          startGame();
-        }
+        gameStarted ? jump() : startGame();
       },
       child: Scaffold(
         body: Column(
