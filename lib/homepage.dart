@@ -78,9 +78,9 @@ class _HomePageState extends State<HomePage> {
   int scoreBoard() {
     //must be updated if more barriers are added
     if (gameScore % 2 == 0) {
-      if (barrierX[0] < -0.15) gameScore++;
+      if (barrierX[0] < -0.1) gameScore++;
     } else {
-      if (barrierX[1] < -0.15) gameScore++;
+      if (barrierX[1] < -0.1) gameScore++;
     }
 
     return gameScore;
