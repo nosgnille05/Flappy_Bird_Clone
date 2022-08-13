@@ -75,6 +75,21 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            /*backgroundColor: Colors.transparent,
+            content: Column(
+              children: Column(
+                children: [
+                Row(/*Game Over*/),
+                Row(/*Medal-Score-BEST*/),
+                Row(
+                  children: [
+                    Column(/*Play Agin*/),
+                    Column(/*Leader Board*/),
+                  ],
+                ),
+              ],),
+            ),*/
+
             backgroundColor: Colors.brown,
             /*title: Center(
               child: Text(
