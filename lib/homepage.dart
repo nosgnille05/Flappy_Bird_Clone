@@ -79,21 +79,31 @@ class _HomePageState extends State<HomePage> {
             title: Center(
               child: Text(
                 "GAME OVER",
-                style: TextStyle(color: Colors.white, fontSize: 25),
+                style: TextStyle(color: Colors.white, fontSize: 40),
               ),
             ),
             content: Container(
-              height: 50,
+              height: 100,
               child: Column(
                 children: [
                   Text(
-                    "SCORE: " + scoreBoard().toString(),
-                    textAlign: TextAlign.center,
+                    "SCORE: ",
+                    textAlign: TextAlign.right,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Text(
-                    "BEST: " + highScore.toString(),
-                    textAlign: TextAlign.center,
+                    scoreBoard().toString(),
+                    textAlign: TextAlign.right,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  Text(
+                    "BEST: ",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  Text(
+                    highScore.toString(),
+                    textAlign: TextAlign.right,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ],
@@ -105,12 +115,14 @@ class _HomePageState extends State<HomePage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(8),
-                    color: Colors.white,
-                    child: Text(
-                      "PLAY AGAIN",
-                      style: TextStyle(color: Colors.brown),
+                    alignment: Alignment(-0.9, 0.8),
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      color: Colors.white,
+                      child: Text(
+                        "PLAY AGAIN",
+                        style: TextStyle(color: Colors.brown),
+                      ),
                     ),
                   ),
                 ),
@@ -181,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                   AnimatedContainer(
                     alignment: Alignment(0, birdYaxis),
                     duration: Duration(milliseconds: 0),
-                    color: Colors.blue,
+                    color: Colors.blue.shade400,
                     child: MyBird(
                       birdYaxis: birdYaxis,
                       birdWidth: birdWidth,
@@ -235,10 +247,10 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               height: 17,
-              color: Colors.green.shade700,
+              color: Colors.green.shade400,
             ),
             Expanded(
-              child: Container(color: Colors.brown),
+              child: Container(color: Colors.orange.shade100),
             ),
           ]),
         ),
