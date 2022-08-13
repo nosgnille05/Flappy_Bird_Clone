@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
   //Bird Variables
   static double birdYaxis = 0;
   double time = 0, height = 0, initialHeight = birdYaxis, velocity = 2.8;
+  double birdWidth = 0.1, birdHeight = 0.1;
 
   //Game Variables
   bool gameStarted = false;
@@ -23,6 +24,13 @@ class _HomePageState extends State<HomePage> {
   //Barrier Variables
   static double barrierXone = 1.7;
   static double barrierXtwo = barrierXone + 1.7;
+  //Updated Barrier Variables
+  static List<double> barrierX = [1.7, 1.7 + 1.7];
+  static double barrierWidth = 0.5;
+  List<List<double>> barrierHeight = [
+    [0.6, 0.4],
+    [0.4, 0.6]
+  ];
 
   void jump() {
     setState(() {
@@ -40,7 +48,9 @@ class _HomePageState extends State<HomePage> {
         birdYaxis = initialHeight - height;
       });
 
-      setState(() {
+      moveMap();
+
+      /*setState(() {
         if (barrierXone < -1.7) {
           barrierXone += 3.4;
         } else {
@@ -54,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         } else {
           barrierXtwo -= 0.05;
         }
-      });
+      });*/
 
       if (birdIsDead()) {
         timer.cancel();
@@ -68,9 +78,9 @@ class _HomePageState extends State<HomePage> {
   int scoreBoard() {
     //must be updated if more barriers are added
     if (gameScore % 2 == 0) {
-      if (barrierXone < -0.1) gameScore++;
+      if (barrierX[0] < -0.15) gameScore++;
     } else {
-      if (barrierXtwo < -0.1) gameScore++;
+      if (barrierX[1] < -0.15) gameScore++;
     }
 
     return gameScore;
@@ -93,12 +103,12 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Text(
-                    "Your score: " + scoreBoard().toString(),
+                    "SCORE: " + scoreBoard().toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Text(
-                    "High score: " + highScore.toString(),
+                    "BEST: " + highScore.toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
@@ -133,18 +143,50 @@ class _HomePageState extends State<HomePage> {
       gameStarted = false;
       time = 0;
       initialHeight = birdYaxis;
-      barrierXone = 1.7;
-      barrierXtwo = barrierXone + 1.7;
+      barrierX[0] = 1.7;
+      barrierX[1] = barrierX[0] + 1.7;
       gameScore = 0;
     });
   }
 
-  bool birdIsDead() {
-    if (birdYaxis < -1.1 || birdYaxis > 1) {
+  void moveMap() {
+    for (int i = 0; i < barrierX.length; i++) {
+      setState(() {
+        barrierX[i] -= 0.05;
+      });
+      if (barrierX[i] < -1.7) {
+        barrierX[i] += 3.4;
+      }
+    }
+  }
+
+  /*bool birdIsDead() {
+    if ((birdYaxis < -1.1 || birdYaxis > 1)) {
       if (gameScore > highScore) {
         highScore = gameScore;
       }
       return true;
+    }
+    return false;
+  }*/
+
+  bool birdIsDead() {
+    if ((birdYaxis < -1.1 || birdYaxis > 1)) {
+      if (gameScore > highScore) {
+        highScore = gameScore;
+      }
+      return true;
+    }
+    for (int i = 0; i < barrierX.length; i++) {
+      if (barrierX[i] <= birdWidth &&
+          barrierX[i] + barrierWidth >= birdWidth &&
+          (birdYaxis <= -1 + barrierHeight[i][0] ||
+              birdYaxis + birdHeight >= 1 - barrierHeight[i][1])) {
+        if (gameScore > highScore) {
+          highScore = gameScore;
+        }
+        return true;
+      }
     }
     return false;
   }
@@ -159,29 +201,20 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: (<Widget>[
             Expanded(
-              flex: 3,
+              flex: 4,
               child: Stack(
                 children: [
                   AnimatedContainer(
                     alignment: Alignment(0, birdYaxis),
                     duration: Duration(milliseconds: 0),
                     color: Colors.blue,
-                    child: MyBird(),
+                    child: MyBird(
+                      birdYaxis: birdYaxis,
+                      birdWidth: birdWidth,
+                      birdHeight: birdHeight,
+                    ),
                   ),
-                  Container(
-                      alignment: Alignment(0, -0.2),
-                      child: gameStarted
-                          ? Text(scoreBoard().toString(),
-                              style: TextStyle(
-                                fontSize: 50,
-                                color: Colors.white,
-                              ))
-                          : Text("T A P   T O   P L A Y",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                              ))),
-                  AnimatedContainer(
+                  /*AnimatedContainer(
                     alignment: Alignment(barrierXone, 1.1),
                     duration: Duration(milliseconds: 0),
                     child: MyBarrier(
@@ -208,32 +241,60 @@ class _HomePageState extends State<HomePage> {
                     child: MyBarrier(
                       size: 250.0,
                     ),
-                  ),
-                  /*AnimatedContainer(
-                    alignment: Alignment(barrierXthree, 1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 300.0,
-                    ),
-                  ),
-                  AnimatedContainer(
-                    alignment: Alignment(barrierXthree, -1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 100.0,
-                    ),
                   ),*/
+                  //Add New Barrier Here
+                  //Top Barrier 1
+                  MyBarrier(
+                    barrierX: barrierX[0],
+                    barrierY: 1.1,
+                    barrierHeight: 200.0,
+                    isThisBottomBarrier: false,
+                  ),
+                  //Bottom Barrier 1
+                  MyBarrier(
+                    barrierX: barrierX[0],
+                    barrierY: -1.1,
+                    barrierHeight: 200.0,
+                    isThisBottomBarrier: false,
+                  ),
+                  //Top Barrier 2
+                  MyBarrier(
+                    barrierX: barrierX[1],
+                    barrierY: 1.1,
+                    barrierHeight: 150.0,
+                    isThisBottomBarrier: false,
+                  ),
+                  //Bottom Barrier 2
+                  MyBarrier(
+                    barrierX: barrierX[1],
+                    barrierY: -1.1,
+                    barrierHeight: 250.0,
+                    isThisBottomBarrier: false,
+                  ),
+                  Container(
+                      alignment: Alignment(0, -0.8),
+                      child: gameStarted
+                          ? Text(scoreBoard().toString(),
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 70,
+                                color: Colors.white,
+                              ))
+                          : Text("T A P   T O   P L A Y",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ))),
                 ],
               ),
             ),
             Container(
-              height: 15,
-              color: Colors.green,
+              height: 17,
+              color: Colors.green.shade700,
             ),
             Expanded(
-              child: Container(
-                color: Colors.brown,
-                child: Row(
+              child: Container(color: Colors.brown
+                  /*child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
@@ -264,8 +325,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ],
-                ),
-              ),
+                ),*/
+                  ),
             ),
           ]),
         ),
