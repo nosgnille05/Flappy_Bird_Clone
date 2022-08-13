@@ -75,99 +75,150 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            /*backgroundColor: Colors.transparent,
+            alignment: Alignment.center,
+            backgroundColor: Colors.transparent,
             content: Column(
-              children: Column(
-                children: [
-                Row(/*Game Over*/),
-                Row(/*Medal-Score-BEST*/),
-                Row(
-                  children: [
-                    Column(/*Play Agin*/),
-                    Column(/*Leader Board*/),
-                  ],
-                ),
-              ],),
-            ),*/
-
-            backgroundColor: Colors.brown,
-            /*title: Center(
-              child: Text(
-                "GAME OVER",
-                style: TextStyle(color: Colors.white, fontSize: 40),
-              ),
-            ),*/
-            content: Row(
               children: [
                 Container(
-                  width: 115,
-                  height: 115,
-                  alignment: Alignment.topLeft,
-                  child: Column(
+                  width: 400,
+                  height: 85,
+                  margin: EdgeInsets.only(bottom: 25, top: 75),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: Colors.brown.shade200),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "GAME OVER",
+                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  ),
+                ),
+                Container(
+                  width: 400,
+                  height: 125,
+                  margin: EdgeInsets.only(bottom: 25),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: Colors.brown.shade200),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "MEDAL: \n",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      Container(
+                        width: 115,
+                        height: 115,
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: [
+                            Text(
+                              "MEDAL: \n",
+                              textAlign: TextAlign.left,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Text(
+                              "add\nmedal\nhere",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 10),
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        "add\nmedal\nhere",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black, fontSize: 10),
+                      Container(
+                        width: 115,
+                        height: 115,
+                        alignment: Alignment.topRight,
+                        child: Column(
+                          children: [
+                            Text(
+                              "SCORE: ",
+                              textAlign: TextAlign.right,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Text(
+                              scoreBoard().toString() + "\n",
+                              textAlign: TextAlign.right,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Text(
+                              "BEST: ",
+                              textAlign: TextAlign.right,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Text(
+                              highScore.toString(),
+                              textAlign: TextAlign.right,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  width: 115,
-                  height: 115,
-                  alignment: Alignment.topRight,
-                  child: Column(
-                    children: [
-                      Text(
-                        "SCORE: ",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                Row(
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 75,
+                      margin: EdgeInsets.only(right: 64),
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: resetGame,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            alignment: Alignment(-0.9, 0.8),
+                            child: Container(
+                              width: 100,
+                              height: 75,
+                              padding: EdgeInsets.all(8),
+                              color: Colors.brown.shade200,
+                              child: Text(
+                                "PLAY\nAGAIN",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      Text(
-                        scoreBoard().toString() + "\n",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Container(
+                      width: 100,
+                      height: 75,
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: resetGame,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            alignment: Alignment(-0.9, 0.8),
+                            child: Container(
+                              width: 100,
+                              height: 75,
+                              padding: EdgeInsets.all(8),
+                              color: Colors.brown.shade200,
+                              child: Text(
+                                "Leader\nBoard",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      Text(
-                        "BEST: ",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Text(
-                        highScore.toString(),
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            actions: [
-              GestureDetector(
-                onTap: resetGame,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Container(
-                    alignment: Alignment(-0.9, 0.8),
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      color: Colors.white,
-                      child: Text(
-                        "PLAY AGAIN",
-                        style: TextStyle(color: Colors.brown),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           );
         });
   }
