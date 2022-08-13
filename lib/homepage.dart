@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 
 import 'dart:async';
 import 'package:flappy_bird_clone/barriers.dart';
@@ -62,9 +62,9 @@ class _HomePageState extends State<HomePage> {
   int scoreBoard() {
     //must be updated if more barriers are added
     if (gameScore % 2 == 0) {
-      if (barrierX[0] < -0.1) gameScore++;
+      if (barrierX[0] < -0.15) gameScore++;
     } else {
-      if (barrierX[1] < -0.1) gameScore++;
+      if (barrierX[1] < -0.15) gameScore++;
     }
 
     return gameScore;
@@ -76,38 +76,63 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Colors.brown,
-            title: Center(
+            /*title: Center(
               child: Text(
                 "GAME OVER",
                 style: TextStyle(color: Colors.white, fontSize: 40),
               ),
-            ),
-            content: Container(
-              height: 100,
-              child: Column(
-                children: [
-                  Text(
-                    "SCORE: ",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+            ),*/
+            content: Row(
+              children: [
+                Container(
+                  width: 115,
+                  height: 115,
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    children: [
+                      Text(
+                        "MEDAL: \n",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        "add\nmedal\nhere",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black, fontSize: 10),
+                      ),
+                    ],
                   ),
-                  Text(
-                    scoreBoard().toString(),
-                    textAlign: TextAlign.right,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                Container(
+                  width: 115,
+                  height: 115,
+                  alignment: Alignment.topRight,
+                  child: Column(
+                    children: [
+                      Text(
+                        "SCORE: ",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        scoreBoard().toString() + "\n",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        "BEST: ",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        highScore.toString(),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "BEST: ",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Text(
-                    highScore.toString(),
-                    textAlign: TextAlign.right,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
             actions: [
               GestureDetector(
@@ -229,7 +254,7 @@ class _HomePageState extends State<HomePage> {
                     isThisBottomBarrier: false,
                   ),
                   Container(
-                      alignment: Alignment(0, -0.8),
+                      alignment: Alignment(0, -0.75),
                       child: gameStarted
                           ? Text(scoreBoard().toString(),
                               style: TextStyle(

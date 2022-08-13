@@ -20,14 +20,9 @@ class MyBarrier extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment(barrierX, barrierY),
-      /*Alignment((2 * barrierX + barrierWidth) / (2 - barrierWidth),
-          isThisBottomBarrier ? 1 : -1),*/
       child: Container(
-        //color: Colors.green,
         width: 75,
-        /*MediaQuery.of(context).size.width * barrierWidth / 2,*/
         height: barrierHeight,
-        /*MediaQuery.of(context).size.height * 3 / 4 - barrierHeight / 2,*/
         decoration: BoxDecoration(
           color: Colors.green,
           border: Border.all(width: 5, color: Colors.green.shade800),
