@@ -1,4 +1,4 @@
-//ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, library_private_types_in_public_api
 
 import 'dart:async';
 import 'package:flappy_bird_clone/barriers.dart';
@@ -22,9 +22,6 @@ class _HomePageState extends State<HomePage> {
   int highScore = 0;
 
   //Barrier Variables
-  static double barrierXone = 1.7;
-  static double barrierXtwo = barrierXone + 1.7;
-  //Updated Barrier Variables
   static List<double> barrierX = [1.7, 1.7 + 1.7];
   static double barrierWidth = 0.5;
   List<List<double>> barrierHeight = [
@@ -48,29 +45,16 @@ class _HomePageState extends State<HomePage> {
         birdYaxis = initialHeight - height;
       });
 
+      //Update Barrier Position
       moveMap();
 
-      /*setState(() {
-        if (barrierXone < -1.7) {
-          barrierXone += 3.4;
-        } else {
-          barrierXone -= 0.05;
-        }
-      });
-
-      setState(() {
-        if (barrierXtwo < -1.7) {
-          barrierXtwo += 3.4;
-        } else {
-          barrierXtwo -= 0.05;
-        }
-      });*/
-
+      //Game Over Display Output of Game
       if (birdIsDead()) {
         timer.cancel();
         gameStarted = false;
         _showDialog();
       }
+
       time += 0.01;
     });
   }
@@ -160,16 +144,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  /*bool birdIsDead() {
-    if ((birdYaxis < -1.1 || birdYaxis > 1)) {
-      if (gameScore > highScore) {
-        highScore = gameScore;
-      }
-      return true;
-    }
-    return false;
-  }*/
-
   bool birdIsDead() {
     if ((birdYaxis < -1.1 || birdYaxis > 1)) {
       if (gameScore > highScore) {
@@ -214,35 +188,6 @@ class _HomePageState extends State<HomePage> {
                       birdHeight: birdHeight,
                     ),
                   ),
-                  /*AnimatedContainer(
-                    alignment: Alignment(barrierXone, 1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 200.0,
-                    ),
-                  ),
-                  AnimatedContainer(
-                    alignment: Alignment(barrierXone, -1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 200.0,
-                    ),
-                  ),
-                  AnimatedContainer(
-                    alignment: Alignment(barrierXtwo, 1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 150.0,
-                    ),
-                  ),
-                  AnimatedContainer(
-                    alignment: Alignment(barrierXtwo, -1.1),
-                    duration: Duration(milliseconds: 0),
-                    child: MyBarrier(
-                      size: 250.0,
-                    ),
-                  ),*/
-                  //Add New Barrier Here
                   //Top Barrier 1
                   MyBarrier(
                     barrierX: barrierX[0],
@@ -293,40 +238,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.green.shade700,
             ),
             Expanded(
-              child: Container(color: Colors.brown
-                  /*child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("SCORE",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20)),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text("0",
-                            style: TextStyle(color: Colors.white, fontSize: 35))
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("BEST",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20)),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text("10",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 35)),
-                      ],
-                    ),
-                  ],
-                ),*/
-                  ),
+              child: Container(color: Colors.brown),
             ),
           ]),
         ),

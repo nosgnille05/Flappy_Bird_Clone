@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
 
-/*class MyBird extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: 60,
-      child: Image.asset('lib/images/flappy_bird.png'),
-    );
-  }
-}*/
-
 class MyBird extends StatelessWidget {
   final birdYaxis;
   final double birdHeight;
@@ -25,10 +14,8 @@ class MyBird extends StatelessWidget {
             Alignment(0, (2 * birdYaxis + birdHeight) / (2 - birdHeight)),
         child: Image.asset(
           'lib/images/flappy_bird.png',
-          width: 50 /*MediaQuery.of(context).size.width * birdWidth / 2*/,
-          height:
-              50 /*MediaQuery.of(context).size.width * 3 / 4 * birdWidth / 2*/,
-          //fit: BoxFit.fill,
+          width: 50,
+          height: 50,
         ));
   }
 }
