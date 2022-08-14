@@ -128,20 +128,22 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 400,
                   height: 85,
-                  margin: EdgeInsets.only(bottom: 25, top: 100),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.brown.shade200),
+                  margin: EdgeInsets.only(bottom: 15, top: 100),
+                  /*decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.brown.shade200),*/
                   alignment: Alignment.center,
-                  child: Text(
+                  child: Image.asset('lib/images/game_over.png',
+                      width: 400, height: 85),
+                  /*Text(
                     "GAME OVER",
                     style: TextStyle(color: Colors.white, fontSize: 40),
-                  ),
+                  ),*/
                 ),
                 Container(
                   width: 400,
                   height: 125,
-                  margin: EdgeInsets.only(bottom: 25),
+                  margin: EdgeInsets.only(bottom: 45),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.brown.shade200),
