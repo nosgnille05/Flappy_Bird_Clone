@@ -98,15 +98,22 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  //6, 16, 36, 51, 101
   String medalWon() {
     if (scoreBoard() == 0) {
       return 'lib/images/flappy_bird.png';
-    } else if (scoreBoard() < 4) {
-      return "Not\nBad";
-    } else if (scoreBoard() < 8) {
-      return "Almost\nDouble\nDigits";
+    } else if (scoreBoard() < 6) {
+      return 'lib/images/red_medal.png';
+    } else if (scoreBoard() < 16) {
+      return 'lib/images/blue_medal.png';
+    } else if (scoreBoard() < 36) {
+      return 'lib/images/green_medal.png';
+    } else if (scoreBoard() < 51) {
+      return 'lib/images/indigo_medal.png';
+    } else if (scoreBoard() < 101) {
+      return 'lib/images/pink_medal.png';
     }
-    return "8 Or\nBetter";
+    return 'lib/images/flappy_bird.png';
   }
 
   void _showDialog() {
