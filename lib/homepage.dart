@@ -70,6 +70,34 @@ class _HomePageState extends State<HomePage> {
     return gameScore;
   }
 
+  void _showLeaderDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            alignment: Alignment.center,
+            backgroundColor: Colors.transparent,
+            content: Column(
+              children: [
+                Container(
+                  width: 400,
+                  height: 85,
+                  margin: EdgeInsets.only(bottom: 25, top: 100),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: Colors.brown.shade200),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Leaders",
+                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
   void _showDialog() {
     showDialog(
         context: context,
@@ -82,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 400,
                   height: 85,
-                  margin: EdgeInsets.only(bottom: 25, top: 75),
+                  margin: EdgeInsets.only(bottom: 25, top: 100),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.brown.shade200),
@@ -194,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                       height: 75,
                       alignment: Alignment.center,
                       child: GestureDetector(
-                        onTap: resetGame,
+                        onTap: _showLeaderDialog,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
