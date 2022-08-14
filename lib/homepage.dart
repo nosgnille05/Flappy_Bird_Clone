@@ -98,6 +98,17 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  String medalWon() {
+    if (scoreBoard() == 0) {
+      return 'lib/images/flappy_bird.png';
+    } else if (scoreBoard() < 4) {
+      return "Not\nBad";
+    } else if (scoreBoard() < 8) {
+      return "Almost\nDouble\nDigits";
+    }
+    return "8 Or\nBetter";
+  }
+
   void _showDialog() {
     showDialog(
         context: context,
@@ -143,11 +154,12 @@ class _HomePageState extends State<HomePage> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
-                            Text(
-                              "add\nmedal\nhere",
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 10),
+                            Container(
+                              alignment: Alignment.topCenter,
+                              width: 50,
+                              height: 50,
+                              child: Image.asset(medalWon(),
+                                  width: 50, height: 50),
                             ),
                           ],
                         ),
