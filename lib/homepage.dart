@@ -88,12 +88,12 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   width: 400,
-                  height: 85,
+                  height: 400,
                   margin: EdgeInsets.only(bottom: 25, top: 100),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.brown.shade200),
-                  alignment: Alignment.center,
+                  alignment: Alignment.topCenter,
                   child: Text(
                     "Leaders",
                     style: TextStyle(color: Colors.white, fontSize: 40),
