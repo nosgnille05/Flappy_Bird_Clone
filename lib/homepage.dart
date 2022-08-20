@@ -163,17 +163,25 @@ class _HomePageState extends State<HomePage> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
-                            Container(
-                              alignment: Alignment.topCenter,
-                              width: 15,
-                              height: 5,
-                              child: Text(
-                                "NEW",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 10),
-                              ),
+                            Row(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  width: 50,
+                                  height: 10,
+                                  child: Image.asset(
+                                    'lib/images/new_medal.png', /*width: 50, height: 35*/
+                                  ),
+                                ),
+                              ],
                             ),
+                            /*Container(
+                              alignment: Alignment.topLeft,
+                              width: 30,
+                              height: 15,
+                              child: Image.asset('lib/images/medal_won.png',
+                                  width: 30, height: 15),
+                            ),*/
                             Container(
                               alignment: Alignment.topCenter,
                               width: 50,
