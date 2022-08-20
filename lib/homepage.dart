@@ -18,8 +18,10 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
+  int earnedNewMedal = 0;
   int gameScore = 0;
   int highScore = 0;
+  int gameCount = 0;
 
   //Barrier Variables
   static List<double> barrierX = [1.7, 1.7 + 1.7];
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void startGame() {
+    print(gameCount);
     gameStarted = true;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
@@ -53,6 +56,7 @@ class _HomePageState extends State<HomePage> {
         timer.cancel();
         gameStarted = false;
         _showDialog();
+        //gameCount++;
       }
 
       time += 0.01;
@@ -100,7 +104,10 @@ class _HomePageState extends State<HomePage> {
 
   //6, 16, 36, 51, 101
   String medalWon() {
-    if (scoreBoard() == 0) {
+    if (scoreBoard() == 0 && gameCount == 0) {
+      earnedNewMedal = 1;
+      return 'lib/images/flappy_bird.png';
+    } else if (scoreBoard() == 0) {
       return 'lib/images/flappy_bird.png';
     } else if (scoreBoard() < 6) {
       return 'lib/images/red_medal.png';
@@ -117,8 +124,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   String newMedal() {
-    int x = 0;
-    if (x == 0) {
+    if (earnedNewMedal == 1) {
+      earnedNewMedal = 0;
       return 'lib/images/new_medal.png';
     }
     return 'lib/images/no_new_medal.png';
@@ -159,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom: 0),
+                              margin: EdgeInsets.only(bottom: 11),
                               child: Text(
-                                "MEDAL: \n",
+                                "MEDAL:",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
@@ -175,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                                   width: 50,
                                   height: 15,
                                   child: Image.asset(
-                                    newMedal(), /*width: 50, height: 35*/
+                                    newMedal(),
                                   ),
                                 ),
                               ],
