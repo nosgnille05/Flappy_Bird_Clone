@@ -19,10 +19,14 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
-  bool earnedNewMedal = false;
   int gameScore = 0;
   int highScore = 0;
-  int gameCount = 0;
+  bool levelOneMedal = false;
+  bool levelTwoMedal = false;
+  bool levelThreeMedal = false;
+  bool levelFourMedal = false;
+  bool levelFiveMedal = false;
+  bool levelSixMedal = false;
 
   //Barrier Variables
   static List<double> barrierX = [1.7, 1.7 + 1.7];
@@ -40,7 +44,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void startGame() {
-    print(gameCount);
     gameStarted = true;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
@@ -57,7 +60,6 @@ class _HomePageState extends State<HomePage> {
         timer.cancel();
         gameStarted = false;
         _showDialog();
-        gameCount++;
       }
 
       time += 0.01;
@@ -105,14 +107,9 @@ class _HomePageState extends State<HomePage> {
 
   //6, 16, 36, 51, 101
   String medalWon() {
-    if (gameCount == 0) {
-      earnedNewMedal = true;
-    }
-
     if (scoreBoard() == 0) {
       return 'lib/images/flappy_bird.png';
     } else if (scoreBoard() < 6) {
-      //earnedNewMedal = true;
       return 'lib/images/red_medal.png';
     } else if (scoreBoard() < 16) {
       return 'lib/images/blue_medal.png';
@@ -127,9 +124,36 @@ class _HomePageState extends State<HomePage> {
   }
 
   String newMedal() {
-    if (earnedNewMedal) {
-      earnedNewMedal = false;
-      return 'lib/images/new_medal.png';
+    if (scoreBoard() == 0) {
+      if (levelOneMedal == false) {
+        levelOneMedal = true;
+        return 'lib/images/new_medal.png';
+      }
+    } else if (scoreBoard() < 6) {
+      if (levelTwoMedal == false) {
+        levelTwoMedal = true;
+        return 'lib/images/new_medal.png';
+      }
+    } else if (scoreBoard() < 16) {
+      if (levelThreeMedal == false) {
+        levelThreeMedal = true;
+        return 'lib/images/new_medal.png';
+      }
+    } else if (scoreBoard() < 36) {
+      if (levelFourMedal == false) {
+        levelFourMedal = true;
+        return 'lib/images/new_medal.png';
+      }
+    } else if (scoreBoard() < 51) {
+      if (levelFiveMedal == false) {
+        levelFiveMedal = true;
+        return 'lib/images/new_medal.png';
+      }
+    } else if (scoreBoard() < 101) {
+      if (levelSixMedal == false) {
+        levelSixMedal = true;
+        return 'lib/images/new_medal.png';
+      }
     }
     return 'lib/images/no_new_medal.png';
   }
