@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 
 import 'dart:async';
+import 'dart:math';
 import 'package:flappy_bird_clone/barriers.dart';
 import 'package:flappy_bird_clone/bird.dart';
 import 'package:flutter/material.dart';
@@ -104,10 +105,14 @@ class _HomePageState extends State<HomePage> {
 
   //6, 16, 36, 51, 101
   String medalWon() {
+    if (gameCount == 0) {
+      earnedNewMedal = true;
+    }
+
     if (scoreBoard() == 0) {
       return 'lib/images/flappy_bird.png';
     } else if (scoreBoard() < 6) {
-      earnedNewMedal = true;
+      //earnedNewMedal = true;
       return 'lib/images/red_medal.png';
     } else if (scoreBoard() < 16) {
       return 'lib/images/blue_medal.png';
@@ -123,7 +128,7 @@ class _HomePageState extends State<HomePage> {
 
   String newMedal() {
     if (earnedNewMedal) {
-      //earnedNewMedal = false;
+      earnedNewMedal = false;
       return 'lib/images/new_medal.png';
     }
     return 'lib/images/no_new_medal.png';
