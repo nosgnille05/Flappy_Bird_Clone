@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 400,
                   height: 85,
-                  margin: EdgeInsets.only(bottom: 15, top: 100),
+                  margin: EdgeInsets.only(bottom: 15, top: 150),
                   /*decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     color: Colors.brown.shade200),*/
@@ -162,6 +162,17 @@ class _HomePageState extends State<HomePage> {
                               textAlign: TextAlign.left,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            Container(
+                              alignment: Alignment.topCenter,
+                              width: 15,
+                              height: 5,
+                              child: Text(
+                                "NEW",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 10),
+                              ),
                             ),
                             Container(
                               alignment: Alignment.topCenter,
