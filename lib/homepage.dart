@@ -116,6 +116,14 @@ class _HomePageState extends State<HomePage> {
     return 'lib/images/flappy_bird.png';
   }
 
+  String newMedal() {
+    int x = 0;
+    if (x == 0) {
+      return 'lib/images/new_medal.png';
+    }
+    return 'lib/images/no_new_medal.png';
+  }
+
   void _showDialog() {
     showDialog(
         context: context,
@@ -129,16 +137,9 @@ class _HomePageState extends State<HomePage> {
                   width: 400,
                   height: 85,
                   margin: EdgeInsets.only(bottom: 15, top: 150),
-                  /*decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: Colors.brown.shade200),*/
                   alignment: Alignment.center,
                   child: Image.asset('lib/images/game_over.png',
                       width: 400, height: 85),
-                  /*Text(
-                    "GAME OVER",
-                    style: TextStyle(color: Colors.white, fontSize: 40),
-                  ),*/
                 ),
                 Container(
                   width: 400,
@@ -157,32 +158,30 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.topLeft,
                         child: Column(
                           children: [
-                            Text(
-                              "MEDAL: \n",
-                              textAlign: TextAlign.left,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 0),
+                              child: Text(
+                                "MEDAL: \n",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
                             ),
                             Row(
                               children: [
                                 Container(
+                                  margin: EdgeInsets.only(bottom: 0, top: 0),
                                   alignment: Alignment.topLeft,
                                   width: 50,
-                                  height: 10,
+                                  height: 15,
                                   child: Image.asset(
-                                    'lib/images/new_medal.png', /*width: 50, height: 35*/
+                                    newMedal(), /*width: 50, height: 35*/
                                   ),
                                 ),
                               ],
                             ),
-                            /*Container(
-                              alignment: Alignment.topLeft,
-                              width: 30,
-                              height: 15,
-                              child: Image.asset('lib/images/medal_won.png',
-                                  width: 30, height: 15),
-                            ),*/
                             Container(
+                              margin: EdgeInsets.only(top: 0),
                               alignment: Alignment.topCenter,
                               width: 50,
                               height: 50,
