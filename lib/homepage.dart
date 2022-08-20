@@ -174,32 +174,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                /*Container(
-                      width: 100,
-                      height: 75,
-                      alignment: Alignment.center,
-                      child: GestureDetector(
-                        onTap: _showLeaderDialog,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            alignment: Alignment(-0.9, 0.8),
-                            child: Container(
-                              width: 100,
-                              height: 75,
-                              padding: EdgeInsets.all(8),
-                              color: Colors.brown.shade200,
-                              child: Text(
-                                "Leader\nBoard",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 25),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),*/
               ],
             ),
           );
