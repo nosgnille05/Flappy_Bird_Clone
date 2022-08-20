@@ -88,17 +88,118 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   width: 400,
-                  height: 400,
-                  margin: EdgeInsets.only(bottom: 25, top: 100),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.brown.shade200),
+                  height: 210,
+                  margin: EdgeInsets.only(bottom: 45, top: 165),
                   alignment: Alignment.topCenter,
-                  child: Text(
-                    "Leaders",
-                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.brown.shade200,
+                  ),
+                  child: Column(children: [
+                    Container(
+                      child: Text(
+                        'LEADERS',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 15, bottom: 15, left: 15),
+                      child: Row(
+                        children: [
+                          Text('1. Run #',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Text('1',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 15, left: 15),
+                      child: Row(
+                        children: [
+                          Text('2. Run #',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Text('2',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 15),
+                      child: Row(
+                        children: [
+                          Text('3. Run #',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Text('3',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                        ],
+                      ),
+                    ),
+                  ]),
+                ),
+                Container(
+                  alignment: Alignment(-0.9, 0.8),
+                  child: GestureDetector(
+                    onTap: resetGame,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        width: 400,
+                        height: 75,
+                        padding: EdgeInsets.all(8),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: Colors.brown.shade200,
+                        ),
+                        child: Text(
+                          "B A C K",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
+                /*Container(
+                      width: 100,
+                      height: 75,
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: _showLeaderDialog,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            alignment: Alignment(-0.9, 0.8),
+                            child: Container(
+                              width: 100,
+                              height: 75,
+                              padding: EdgeInsets.all(8),
+                              color: Colors.brown.shade200,
+                              child: Text(
+                                "Leader\nBoard",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),*/
               ],
             ),
           );
