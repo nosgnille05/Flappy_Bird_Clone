@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   //Game Variables
   bool gameStarted = false;
-  int earnedNewMedal = 0;
+  bool earnedNewMedal = false;
   int gameScore = 0;
   int highScore = 0;
   int gameCount = 0;
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         timer.cancel();
         gameStarted = false;
         _showDialog();
-        //gameCount++;
+        gameCount++;
       }
 
       time += 0.01;
@@ -104,12 +104,10 @@ class _HomePageState extends State<HomePage> {
 
   //6, 16, 36, 51, 101
   String medalWon() {
-    if (scoreBoard() == 0 && gameCount == 0) {
-      earnedNewMedal = 1;
-      return 'lib/images/flappy_bird.png';
-    } else if (scoreBoard() == 0) {
+    if (scoreBoard() == 0) {
       return 'lib/images/flappy_bird.png';
     } else if (scoreBoard() < 6) {
+      earnedNewMedal = true;
       return 'lib/images/red_medal.png';
     } else if (scoreBoard() < 16) {
       return 'lib/images/blue_medal.png';
@@ -124,8 +122,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   String newMedal() {
-    if (earnedNewMedal == 1) {
-      earnedNewMedal = 0;
+    if (earnedNewMedal) {
+      //earnedNewMedal = false;
       return 'lib/images/new_medal.png';
     }
     return 'lib/images/no_new_medal.png';
