@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class MyBarrier extends StatelessWidget {
-  final barrierWidth;
+  //final barrierWidth;
   final barrierHeight;
   final barrierX;
   final barrierY;
@@ -12,7 +12,7 @@ class MyBarrier extends StatelessWidget {
   MyBarrier(
       {this.barrierY,
       this.barrierHeight,
-      this.barrierWidth,
+      //this.barrierWidth,
       required this.isThisBottomBarrier,
       this.barrierX});
 
@@ -21,7 +21,7 @@ class MyBarrier extends StatelessWidget {
     return Container(
       alignment: Alignment(barrierX, barrierY),
       child: Container(
-        width: barrierWidth,
+        //width: barrierWidth,
         height: barrierHeight,
         decoration: BoxDecoration(
           //color: Colors.green,
