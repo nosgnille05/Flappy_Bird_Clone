@@ -28,6 +28,9 @@ class _HomePageState extends State<HomePage> {
   bool levelFourMedal = false;
   bool levelFiveMedal = false;
   bool levelSixMedal = false;
+  int firstBestRun = 0;
+  int secondBestRun = 0;
+  int thirdBestRun = 0;
 
   //Barrier Variables
   static List<double> barrierX = [1.7, 1.7 + 1.7];
@@ -79,15 +82,28 @@ class _HomePageState extends State<HomePage> {
     return gameScore;
   }
 
-  int firstBestRun = 0;
-  int secondBestRun = 0;
-  int thirdBestRun = 0;
-
-  String leaders() {
+  int first() {
     if (scoreBoard() > firstBestRun) {
-      return gameCount.toString();
+      firstBestRun = scoreBoard();
+      return scoreBoard();
     }
-    return '';
+    return 0;
+  }
+
+  int second() {
+    if (scoreBoard() > secondBestRun && scoreBoard() <= first()) {
+      secondBestRun = scoreBoard();
+      return scoreBoard();
+    }
+    return 0;
+  }
+
+  int third() {
+    if (scoreBoard() > thirdBestRun && scoreBoard() <= second()) {
+      thirdBestRun = scoreBoard();
+      return scoreBoard();
+    }
+    return 0;
   }
 
   void _showLeaderDialog() {
@@ -117,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 5, bottom: 10, left: 20),
+                      margin: EdgeInsets.only(top: 5, bottom: 5, left: 20),
                       child: Row(
                         children: [
                           Text('Rank   Medal   Score',
@@ -127,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 10, left: 40),
+                      margin: EdgeInsets.only(bottom: 5, left: 40),
                       child: Row(
                         children: [
                           Text('1.',
@@ -141,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Text('10',
+                            child: Text(first().toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 25)),
@@ -150,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 10, left: 25),
+                      margin: EdgeInsets.only(bottom: 5, left: 40),
                       child: Row(
                         children: [
                           Text('2.',
@@ -164,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Text('10',
+                            child: Text(second().toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 25)),
@@ -173,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 25),
+                      margin: EdgeInsets.only(left: 40),
                       child: Row(
                         children: [
                           Text('3.',
@@ -182,12 +198,12 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Image.asset('lib/images/flappy_bird.png',
+                            child: Image.asset('lib/images/green_medal.png',
                                 width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Text('10',
+                            child: Text(third().toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 25)),
