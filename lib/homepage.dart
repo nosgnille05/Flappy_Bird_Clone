@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   bool gameStarted = false;
   int gameScore = 0;
   int highScore = 0;
+  int gameCount = 0;
   bool levelOneMedal = false;
   bool levelTwoMedal = false;
   bool levelThreeMedal = false;
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void startGame() {
+    gameCount++;
     gameStarted = true;
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       time += 0.04;
@@ -77,6 +79,17 @@ class _HomePageState extends State<HomePage> {
     return gameScore;
   }
 
+  int firstBestRun = 0;
+  int secondBestRun = 0;
+  int thirdBestRun = 0;
+
+  String leaders() {
+    if (scoreBoard() > firstBestRun) {
+      return gameCount.toString();
+    }
+    return '';
+  }
+
   void _showLeaderDialog() {
     showDialog(
         context: context,
@@ -104,14 +117,29 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 15, bottom: 15, left: 15),
+                      margin: EdgeInsets.only(top: 5, bottom: 10, left: 20),
                       child: Row(
                         children: [
-                          Text('1. Run #',
+                          Text('Rank   Medal   Score',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, left: 40),
+                      child: Row(
+                        children: [
+                          Text('1.',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
-                          Text('1',
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Image.asset('lib/images/flappy_bird.png',
+                                width: 35, height: 35),
+                          ),
+                          Text('10',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
@@ -119,10 +147,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 15, left: 15),
+                      margin: EdgeInsets.only(bottom: 10, left: 25),
                       child: Row(
                         children: [
-                          Text('2. Run #',
+                          Text('2.',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
@@ -130,18 +158,22 @@ class _HomePageState extends State<HomePage> {
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
+                          Text('10',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
                         ],
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 15),
+                      margin: EdgeInsets.only(left: 25),
                       child: Row(
                         children: [
                           Text('3. Run #',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
-                          Text('3',
+                          Text('2',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
