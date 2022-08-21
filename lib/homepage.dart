@@ -139,10 +139,13 @@ class _HomePageState extends State<HomePage> {
                             child: Image.asset('lib/images/flappy_bird.png',
                                 width: 35, height: 35),
                           ),
-                          Text('10',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text('10',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25)),
+                          ),
                         ],
                       ),
                     ),
@@ -154,14 +157,18 @@ class _HomePageState extends State<HomePage> {
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
-                          Text('2',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 25)),
-                          Text('10',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Image.asset('lib/images/flappy_bird.png',
+                                width: 35, height: 35),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text('10',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25)),
+                          ),
                         ],
                       ),
                     ),
@@ -169,14 +176,22 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.only(left: 25),
                       child: Row(
                         children: [
-                          Text('3. Run #',
+                          Text('3.',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25)),
-                          Text('2',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Image.asset('lib/images/flappy_bird.png',
+                                width: 35, height: 35),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text('10',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 25)),
+                          ),
                         ],
                       ),
                     ),
