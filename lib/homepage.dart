@@ -84,26 +84,34 @@ class _HomePageState extends State<HomePage> {
 
   int first() {
     if (scoreBoard() > firstBestRun) {
+      if (firstBestRun > 0) {
+        //knocking off champion
+        secondBestRun = firstBestRun;
+      }
       firstBestRun = scoreBoard();
-      return scoreBoard();
+      return firstBestRun;
     }
-    return 0;
+    return firstBestRun;
   }
 
   int second() {
-    if (scoreBoard() > secondBestRun && scoreBoard() <= first()) {
+    if (scoreBoard() > secondBestRun && scoreBoard() < first()) {
+      if (secondBestRun > 0) {
+        //knocking off champion
+        thirdBestRun = secondBestRun;
+      }
       secondBestRun = scoreBoard();
-      return scoreBoard();
+      return secondBestRun;
     }
-    return 0;
+    return secondBestRun;
   }
 
   int third() {
-    if (scoreBoard() > thirdBestRun && scoreBoard() <= second()) {
+    if (scoreBoard() > thirdBestRun && scoreBoard() < second()) {
       thirdBestRun = scoreBoard();
-      return scoreBoard();
+      return thirdBestRun;
     }
-    return 0;
+    return thirdBestRun;
   }
 
   void _showLeaderDialog() {
@@ -152,8 +160,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Image.asset('lib/images/flappy_bird.png',
-                                width: 35, height: 35),
+                            child:
+                                Image.asset(medalWon(), width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
@@ -175,8 +183,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Image.asset('lib/images/flappy_bird.png',
-                                width: 35, height: 35),
+                            child:
+                                Image.asset(medalWon(), width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
@@ -198,8 +206,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child: Image.asset('lib/images/green_medal.png',
-                                width: 35, height: 35),
+                            child:
+                                Image.asset(medalWon(), width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
