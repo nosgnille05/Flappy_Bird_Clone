@@ -114,6 +114,57 @@ class _HomePageState extends State<HomePage> {
     return thirdBestRun;
   }
 
+  String firstPlaceMedalWon() {
+    if (first() == 0) {
+      return 'lib/images/flappy_bird.png';
+    } else if (first() < 6) {
+      return 'lib/images/red_medal.png';
+    } else if (first() < 16) {
+      return 'lib/images/blue_medal.png';
+    } else if (first() < 36) {
+      return 'lib/images/green_medal.png';
+    } else if (first() < 51) {
+      return 'lib/images/indigo_medal.png';
+    } else if (first() < 101) {
+      return 'lib/images/pink_medal.png';
+    }
+    return 'lib/images/flappy_bird.png';
+  }
+
+  String secondPlaceMedalWon() {
+    if (second() == 0) {
+      return 'lib/images/flappy_bird.png';
+    } else if (second() < 6) {
+      return 'lib/images/red_medal.png';
+    } else if (second() < 16) {
+      return 'lib/images/blue_medal.png';
+    } else if (second() < 36) {
+      return 'lib/images/green_medal.png';
+    } else if (second() < 51) {
+      return 'lib/images/indigo_medal.png';
+    } else if (second() < 101) {
+      return 'lib/images/pink_medal.png';
+    }
+    return 'lib/images/flappy_bird.png';
+  }
+
+  String thirdPlaceMedalWon() {
+    if (third() == 0) {
+      return 'lib/images/flappy_bird.png';
+    } else if (third() < 6) {
+      return 'lib/images/red_medal.png';
+    } else if (third() < 16) {
+      return 'lib/images/blue_medal.png';
+    } else if (third() < 36) {
+      return 'lib/images/green_medal.png';
+    } else if (third() < 51) {
+      return 'lib/images/indigo_medal.png';
+    } else if (third() < 101) {
+      return 'lib/images/pink_medal.png';
+    }
+    return 'lib/images/flappy_bird.png';
+  }
+
   void _showLeaderDialog() {
     showDialog(
         context: context,
@@ -160,8 +211,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                                Image.asset(medalWon(), width: 35, height: 35),
+                            child: Image.asset(firstPlaceMedalWon(),
+                                width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
@@ -183,8 +234,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                                Image.asset(medalWon(), width: 35, height: 35),
+                            child: Image.asset(secondPlaceMedalWon(),
+                                width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
@@ -206,8 +257,8 @@ class _HomePageState extends State<HomePage> {
                                   TextStyle(color: Colors.white, fontSize: 25)),
                           Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                                Image.asset(medalWon(), width: 35, height: 35),
+                            child: Image.asset(thirdPlaceMedalWon(),
+                                width: 35, height: 35),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 50),
