@@ -21,7 +21,7 @@ class MyBarrier extends StatelessWidget {
     return Container(
       alignment: Alignment(barrierX, barrierY),
       child: Container(
-        width: 75,
+        width: barrierWidth,
         height: barrierHeight,
         decoration: BoxDecoration(
           //color: Colors.green,

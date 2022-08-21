@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 400,
                   height: 210,
-                  margin: EdgeInsets.only(bottom: 45, top: 165),
+                  margin: EdgeInsets.only(bottom: 45, top: 115),
                   alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
@@ -367,7 +367,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 400,
                   height: 85,
-                  margin: EdgeInsets.only(bottom: 15, top: 150),
+                  margin: EdgeInsets.only(bottom: 15, top: 100),
                   alignment: Alignment.center,
                   child: Image.asset('lib/images/game_over.png',
                       width: 400, height: 85),
