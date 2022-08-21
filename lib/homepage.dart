@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
 
   String firstPlaceMedalWon() {
     if (first() == 0) {
-      return 'lib/images/flappy_bird.png';
+      return 'lib/images/no_new_medal.png';
     } else if (first() < 6) {
       return 'lib/images/red_medal.png';
     } else if (first() < 16) {
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
 
   String secondPlaceMedalWon() {
     if (second() == 0) {
-      return 'lib/images/flappy_bird.png';
+      return 'lib/images/no_new_medal.png';
     } else if (second() < 6) {
       return 'lib/images/red_medal.png';
     } else if (second() < 16) {
@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
 
   String thirdPlaceMedalWon() {
     if (third() == 0) {
-      return 'lib/images/flappy_bird.png';
+      return 'lib/images/no_new_medal.png';
     } else if (third() < 6) {
       return 'lib/images/red_medal.png';
     } else if (third() < 16) {
