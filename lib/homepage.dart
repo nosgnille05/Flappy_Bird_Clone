@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     [0.6, 0.4],
     [0.4, 0.6]
   ];
+  static List<double> barrierWid = [75.0, 50.0, 100.0];
 
   void jump() {
     setState(() {
@@ -593,7 +594,7 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[0],
                     barrierY: 1.1,
-                    //barrierWidth: 75,
+                    barrierWidth: barrierWid[0],
                     barrierHeight: 200.0,
                     isThisBottomBarrier: false,
                   ),
@@ -601,7 +602,7 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[0],
                     barrierY: -1.1,
-                    //barrierWidth: 75,
+                    barrierWidth: barrierWid[0],
                     barrierHeight: 200.0,
                     isThisBottomBarrier: false,
                   ),
@@ -609,7 +610,7 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[1],
                     barrierY: 1.1,
-                    //barrierWidth: 75,
+                    barrierWidth: barrierWid[2],
                     barrierHeight: 150.0,
                     isThisBottomBarrier: false,
                   ),
@@ -617,7 +618,7 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[1],
                     barrierY: -1.1,
-                    //barrierWidth: 75,
+                    barrierWidth: barrierWid[1],
                     barrierHeight: 250.0,
                     isThisBottomBarrier: false,
                   ),
