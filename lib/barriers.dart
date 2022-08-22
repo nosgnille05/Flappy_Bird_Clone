@@ -12,7 +12,7 @@ class MyBarrier extends StatelessWidget {
   MyBarrier(
       {this.barrierY,
       this.barrierHeight,
-      required this.barrierWidth,
+      this.barrierWidth,
       required this.isThisBottomBarrier,
       this.barrierX});
 
@@ -20,15 +20,17 @@ class MyBarrier extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment(barrierX, barrierY),
-      child: SizedBox(
+      child: Container(
         width: barrierWidth,
         height: barrierHeight,
-        /*decoration: BoxDecoration(
-          //color: Colors.green,
-          //border: Border.all(width: 5, color: Colors.green.shade800),
+        decoration: BoxDecoration(
+          color: Colors.green,
+          border: Border.all(width: 5, color: Colors.green.shade800),
           borderRadius: BorderRadius.circular(15),
-        ),*/
-        child: Image.asset('lib/images/barrier.png', width: barrierWidth),
+        ),
+        child: Image.asset(
+          'lib/images/barrier.png',
+        ),
       ),
     );
   }
