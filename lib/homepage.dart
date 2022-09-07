@@ -594,7 +594,6 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[0],
                     barrierY: 1.1,
-                    barrierWidth: 65.0,
                     barrierHeight: 200.0,
                     isThisBottomBarrier: false,
                   ),
@@ -602,7 +601,6 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[0],
                     barrierY: -1.1,
-                    barrierWidth: 65.0,
                     barrierHeight: 200.0,
                     isThisBottomBarrier: false,
                   ),
@@ -610,7 +608,6 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[1],
                     barrierY: 1.1,
-                    barrierWidth: 45.0,
                     barrierHeight: 150.0,
                     isThisBottomBarrier: false,
                   ),
@@ -618,7 +615,6 @@ class _HomePageState extends State<HomePage> {
                   MyBarrier(
                     barrierX: barrierX[1],
                     barrierY: -1.1,
-                    barrierWidth: 80.0,
                     barrierHeight: 250.0,
                     isThisBottomBarrier: false,
                   ),

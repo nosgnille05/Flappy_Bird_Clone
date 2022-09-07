@@ -28,9 +28,9 @@ class MyBarrier extends StatelessWidget {
           border: Border.all(width: 5, color: Colors.green.shade800),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Image.asset(
+        /*child: Image.asset(
           'lib/images/barrier.png',
-        ),
+        ),*/
       ),
     );
   }
